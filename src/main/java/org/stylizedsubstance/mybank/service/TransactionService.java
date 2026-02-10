@@ -1,6 +1,5 @@
 package org.stylizedsubstance.mybank.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.stylizedsubstance.mybank.model.Transaction;
@@ -11,12 +10,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 @Component
 public class TransactionService {
-    @Autowired
-    private DateTimeUtil dateTimeUtil;
+    private final DateTimeUtil dateTimeUtil;
 
     private final String bankSlogan;
 
-    public TransactionService(@Value("${bank.slogan}") String bankSlogan) {
+    public TransactionService(DateTimeUtil dateTimeUtil, @Value("${bank.slogan}") String bankSlogan) {
+        this.dateTimeUtil = dateTimeUtil;
         this.bankSlogan = bankSlogan;
     }
 

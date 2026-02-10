@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Transactions</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Transaction ID</th>
+        <th>Amount (Cents)</th>
+        <th>Timestamp</th>
+        <th>Reference</th>
+        <th>Bank Slogan</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.transactionId}"></td>
+        <td th:text="${transaction.amount}"></td>
+        <td th:text="${transaction.timestamp}"></td>
+        <td th:text="${transaction.reference}"></td>
+        <td th:text="${transaction.bankSlogan}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -3,6 +3,9 @@ package org.stylizedsubstance.mybank.dto;
 import jakarta.validation.constraints.*;
 
 public class TransactionDto {
+    @NotBlank
+    private String userId;
+
     @NotNull
     @Min(0)
     @Max(1000000)
@@ -10,6 +13,14 @@ public class TransactionDto {
 
     @NotBlank
     private String reference;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public Integer getAmount() {
         return amount;

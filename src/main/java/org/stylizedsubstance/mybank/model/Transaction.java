@@ -5,27 +5,33 @@ import org.stylizedsubstance.mybank.util.DateTimeUtil;
 import java.util.UUID;
 
 public class Transaction {
-    private String id;
+    private String transactionId;
+    private String userId;
     private int amount; // Monetary amount in cents
     private String timestamp;
     private String reference;
     private String bankSlogan;
 
-    public Transaction(int amount, String reference, DateTimeUtil dateTimeUtil, String bankSlogan) {
-        this.id = UUID.randomUUID().toString();
+    public Transaction(String userId, int amount, String reference, DateTimeUtil dateTimeUtil, String bankSlogan) {
+        this.transactionId = UUID.randomUUID().toString();
+        this.userId = userId;
         this.amount = amount;
-        this.timestamp = dateTimeUtil.createTimeStamp();
         this.reference = reference;
+        this.timestamp = dateTimeUtil.createTimeStamp();
         this.bankSlogan = bankSlogan;
     }
 
-    public String getId() {
-        return id;
+    public String getTransactionId() {
+        return transactionId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
     }
+
+    public String getUserId() { return userId; }
+
+    public void setUserId(String userId) { this.userId = userId; }
 
     public int getAmount() {
         return amount;
@@ -35,11 +41,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public String getTimeStamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimeStamp(String timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 

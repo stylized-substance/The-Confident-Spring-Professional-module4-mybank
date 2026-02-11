@@ -6,6 +6,9 @@ public class TransactionDto {
     @NotBlank
     private String userId;
 
+    @NotBlank
+    private String recipient;
+
     @NotNull
     @Min(0)
     @Max(1000000)
@@ -20,6 +23,14 @@ public class TransactionDto {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
     }
 
     public Integer getAmount() {

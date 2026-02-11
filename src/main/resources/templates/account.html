@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transaction List</title>
+    <title>Transactions</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,16 +27,42 @@
         tr:hover {
             background-color: #f1f1f1;
         }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            margin-right: 10px;
+            width: calc(30% - 20px);
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
 
 <h1>Transactions</h1>
 
+<form th:action="@{/account/{userId}/createTransaction(userId=${userId})}" th:object="${createTransactionForm}" method="post">
+    <input type="text" th:field="*{receivingUserId}" placeholder="Recipient" required>
+    <input type="number" th:field="*{amount}" placeholder="Amount (Cents)" required>
+    <input type="text" th:field="*{reference}" placeholder="Reference" required>
+    <input type="submit" value="Create Transaction">
+</form>
+
 <table>
     <thead>
     <tr>
         <th>Transaction ID</th>
+        <th>Recipient</th>
         <th>Amount (Cents)</th>
         <th>Timestamp</th>
         <th>Reference</th>
@@ -46,6 +72,7 @@
     <tbody>
     <tr th:each="transaction : ${transactions}">
         <td th:text="${transaction.transactionId}"></td>
+        <td th:text="${transaction.recipient}"></td>
         <td th:text="${transaction.amount}"></td>
         <td th:text="${transaction.timestamp}"></td>
         <td th:text="${transaction.reference}"></td>

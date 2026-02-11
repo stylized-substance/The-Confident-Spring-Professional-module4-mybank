@@ -25,8 +25,8 @@ public class TransactionService {
         return transactions;
     }
 
-    public Transaction create(String userId, int amount, String reference) {
-        Transaction transaction = new Transaction(userId, amount, reference, dateTimeUtil, bankSlogan);
+    public Transaction create(String userId, String recipient, int amount, String reference) {
+        Transaction transaction = new Transaction(userId, recipient, amount, reference, dateTimeUtil, bankSlogan);
         transactions.add(transaction);
         return transaction;
     }

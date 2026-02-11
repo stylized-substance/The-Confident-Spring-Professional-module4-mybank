@@ -21,8 +21,8 @@ public class DummyTransactionCreator {
         int amount = 100;
         int multiplier = 2;
         for (int i = 0; i < 5; i++) {
-            transactionService.create("User0", amount, "devTransaction" + i);
-            transactionService.create("User1", amount, "devTransaction" + i);
+            transactionService.create("User0", "recipient0", amount, "devTransaction" + i);
+            transactionService.create("User1", "recipient1", amount, "devTransaction" + i);
             amount *= multiplier;
         }
     }
